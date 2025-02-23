@@ -217,7 +217,7 @@
 					</a>
 				</li>
 				<li class="nav-item d-none d-xl-block flex-xl-grow-1">
-					<a class="nav-link py-0 py-lg-8" href="http://127.0.0.1:5000/logout" title="Logout" role="tab"
+					<a class="nav-link py-0 py-lg-8" href="{{ url_for('logout',_external=True) }}" title="Logout" role="tab"
 						target="_self" rel="noopener noreferrer">
 						<div class="icon icon-xl">
 							<svg fill="#62d2a2" viewBox="-2 0 19 19" xmlns="http://www.w3.org/2000/svg"
@@ -4725,7 +4725,7 @@
 	<script>
 		// 🟢 1. Load danh sách cuộc trò chuyện từ Flask API
 		function loadConversations() {
-			fetch("http://127.0.0.1:5000/get_conversations")
+			fetch(`${window.location.origin}/get_conversations`)
 				.then(response => response.json())
 				.then(data => {
 					let chatList = document.getElementById("chat-list");
@@ -4775,7 +4775,7 @@
 			console.log("Đang gọi API với conversationId:", conversationId); // Kiểm tra ID
 			document.getElementById("messshow").style.visibility = "hidden";
 
-			fetch(`http://127.0.0.1:5000/get_messages?conversation_id=${conversationId}`)
+			fetch(`${window.location.origin}/get_messages?conversation_id=${conversationId}`)
 				.then(response => response.json())
 				.then(data => {
 					console.log("Dữ liệu nhận từ API:", data); // Kiểm tra phản hồi

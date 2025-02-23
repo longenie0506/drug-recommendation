@@ -12,7 +12,27 @@
     <meta content="Themesdesign" name="author" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="https://themesdesign.in/chaton/layouts/assets/images/favicon.ico" id="tabIcon">
+    <base href="https://themewagon.github.io/orthoc/">
+    <link rel="shortcut icon" href="images/favicon.png" type="">
 
+    <title> Orthoc </title>
+
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+    <!-- fonts style -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <!--owl slider stylesheet -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+    <!-- font awesome style -->
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="css/responsive.css" rel="stylesheet" />
     <!-- Bootstrap Css -->
     <link href="https://themesdesign.in/chaton/layouts/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
     <!-- Icons Css -->
@@ -39,7 +59,7 @@
                                         <p class="text-muted">Hãy đăng ký ngay</p>
                                     </div>
 
-                                    <form action="http://127.0.0.1:5000/register" method="POST">
+                                    <form action="{{ url_for('register',_external=True) }}" method="POST">
 
                                         <div class="mb-3">
                                             <label for="fullname" class="form-label">Họ và tên</label>

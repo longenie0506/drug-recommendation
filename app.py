@@ -15,6 +15,8 @@ from datetime import datetime
 import uuid
 from gemini_handler import GeminiHandler, GenerationConfig, Strategy, KeyRotationStrategy
 from dotenv import load_dotenv
+from flask_talisman import Talisman
+from werkzeug.middleware.proxy_fix import ProxyFix
 # Load biến môi trường từ file .env
 load_dotenv()
 GEMINI_API_KEYS = "d79a0d619cec3273323f9de6872a64dd"
@@ -24,6 +26,9 @@ app = Flask(__name__)
 
 app.secret_key = 'AIzaSyCvlZ63Nkt5NpjdmxYPAsG8Qskex6usCFw'
 app.config['MONGO_URI'] = 'mongodb+srv://admin:iB1hFkFfRyJ0fpt3@cluster0.iey5z.mongodb.net/drug_recom'
+app.config['PREFERRED_URL_SCHEME'] = 'https'
+app.config['SERVER_NAME'] = '3l7qj7nb-5000.asse.devtunnels.ms'
+app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_port=1, x_prefix=1)
 mongo = PyMongo(app)
 
 
@@ -394,10 +399,14 @@ def logout():
 #     app.run(debug=True)
     
     
-
+import logging
 import os
 #from gunicorn.app.base import BaseApplication
+from waitress import serve
 
 if __name__ == "__main__":
-    port = os.environ.get("PORT", 5001)  # Use Render's PORT environment variable
-    app.run(host="127.0.0.1", port=5000)  # Bind to all interfaces, using the port specified
+    logging.basicConfig(level=logging.INFO)
+    logger = logging.getLogger(__name__)
+    port = int(os.environ.get("PORT", 5000))  # Get the port number (default to 5000)
+    logger.info(f"Serving on port {port}")
+    app.run(host='0.0.0.0', port=5000)

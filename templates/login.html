@@ -10,6 +10,29 @@
     <meta content="Chaton - Responsive Chat App Template in HTML. A fully featured HTML chat messenger template in Bootstrap 5" name="description" />
     <meta name="keywords" content="Chaton chat template, chat, web chat template, chat status, chat template, communication, discussion, group chat, message, messenger template, status" />
     <meta content="Themesdesign" name="author" />
+    <base href="https://themewagon.github.io/orthoc/">
+    <link rel="shortcut icon" href="images/favicon.png" type="">
+
+    <title> Orthoc </title>
+
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+    <!-- fonts style -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <!--owl slider stylesheet -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+    <!-- font awesome style -->
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="css/responsive.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <!-- App favicon -->
     <link rel="shortcut icon" href="https://themesdesign.in/chaton/layouts/assets/images/favicon.ico" id="tabIcon">
 
@@ -39,7 +62,7 @@
                                         <p class="text-muted">Chào mừng đến với trang đăng nhập</p>
                                     </div>
 
-                                    <form action="http://127.0.0.1:5000/login" method="POST">
+                                    <form action="{{ url_for('login',_external=True) }}" method="POST">
                                         <div class="mb-3">
                                             <label for="username" class="form-label">Tên đăng nhập</label>
                                             <input type="text" name="username" class="form-control" id="username" placeholder="Enter username">
